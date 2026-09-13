@@ -9,7 +9,7 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("--------------Menu--------------");
     Console.WriteLine();
-    Console.WriteLine("1. Add Contact\n2. Show All Contact\n0. Exit");
+    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n0. Exit");
     Console.WriteLine();
 
     int input = Convert.ToInt32(Console.ReadLine());
@@ -38,6 +38,10 @@ while (true)
     else if (input == 2)
     {
         book.PrintAll();
+    }
+    else if (input == 3)
+    {
+        book.EditContact();
     }
     else if (input == 0)
     {
