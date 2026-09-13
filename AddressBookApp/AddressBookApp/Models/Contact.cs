@@ -1,4 +1,6 @@
 ﻿using System;
+using AddressBookApp.Validation;
+using AddressBookApp.Exceptions;
 namespace AddressBookApp.Models
 {
 	public class Contact
@@ -22,6 +24,15 @@ namespace AddressBookApp.Models
             Zip = zip;
             PhoneNumber = phoneNumber;
             Email = email;
+            try
+            {
+                ContactValidator.Validate(this);
+            }
+            catch (InvalidContactException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         public override string ToString()
