@@ -118,7 +118,37 @@ namespace AddressBookApp.Services
 			}
 		}
 
-		public int TotalContacts()
+        public void SortByCity()
+        {
+            List<Contact> res = books.SelectMany(b => b.GetContacts()).OrderBy(c => c.City).ToList();
+
+            foreach (Contact c in res)
+            {
+                Console.WriteLine(c.ToString());
+            }
+        }
+
+        public void SortByState()
+        {
+            List<Contact> res = books.SelectMany(b => b.GetContacts()).OrderBy(c => c.State).ToList();
+
+            foreach (Contact c in res)
+            {
+                Console.WriteLine(c.ToString());
+            }
+        }
+
+        public void SortByZip()
+        {
+            List<Contact> res = books.SelectMany(b => b.GetContacts()).OrderBy(c => c.Zip).ToList();
+
+            foreach (Contact c in res)
+            {
+                Console.WriteLine(c.ToString());
+            }
+        }
+
+        public int TotalContacts()
 		{
 			int result = books.Sum(b => b.Count);
 			return result;

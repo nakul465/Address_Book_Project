@@ -11,7 +11,7 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("--------------Menu--------------");
     Console.WriteLine();
-    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n5. Add new Address Book\n6. Switch to Another Existing Address Book\n7. Contact Count in current Address Book\n8. Total number of Contacts in all Address Books\n9. Search by City\n10. Search by State\n11. View by City/State\n12. Count by City/State\n13. Sort by Name\n0. Exit");
+    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n5. Add new Address Book\n6. Switch to Another Existing Address Book\n7. Contact Count in current Address Book\n8. Total number of Contacts in all Address Books\n9. Search by City\n10. Search by State\n11. View by City/State\n12. Count by City/State\n13. Sort by Name\n14. Sort by City / State / Zip\n0. Exit");
     Console.WriteLine();
 
     int input = Convert.ToInt32(Console.ReadLine());
@@ -96,9 +96,34 @@ while (true)
     {
         books.SortByName();
     }
+    else if (input == 14)
+    {
+        Console.WriteLine("Which Field to sort by :\n1. City\n2. State\n3. ZIP");
+        int n=Convert.ToInt32(Console.ReadLine());
+        if (n == 1)
+        {
+            books.SortByCity();
+        }
+        else if (n == 2)
+        {
+            books.SortByState();
+        }
+        else if (n == 3)
+        {
+            books.SortByZip();
+        }
+        else
+        {
+            Console.WriteLine("Invalid Input");
+        }
+    }
     else if (input == 0)
     {
         break;
+    }
+    else
+    {
+        Console.WriteLine("Invalid Input");
     }
 
 }
