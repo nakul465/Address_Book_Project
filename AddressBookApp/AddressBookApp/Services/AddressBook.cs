@@ -4,16 +4,25 @@ namespace AddressBookApp.Services
 {
 	public class AddressBook
 	{
+        private static int addressBookCount = 1;
+        public int AddressBookId { get; }
+
 		private List<Contact> contacts;
+
+        private int count;
+        public  int Count { get { return count; } }
 
 		public AddressBook()
 		{
+            AddressBookId = addressBookCount++;
+            count = 0;
 			contacts = new();
 		}
 
 		public void AddContact(Contact c)
 		{
 			contacts.Add(c);
+            count++;
 			Console.WriteLine("Contact Added Successfully");
 		}
 
@@ -91,6 +100,7 @@ namespace AddressBookApp.Services
             else
             {
                 contacts.Remove(c);
+                count--;
                 Console.WriteLine("Contact deleted.");
             }
         }
