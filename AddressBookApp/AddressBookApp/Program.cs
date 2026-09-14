@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using AddressBookApp.Models;
 using AddressBookApp.Services;
+
 AddressBookMain books = new AddressBookMain();
 AddressBook book = new AddressBook();
 books.AddBook(book);
@@ -10,7 +11,7 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("--------------Menu--------------");
     Console.WriteLine();
-    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n5. Add new Address Book\n6. Switch to Another Existing Address Book\n7. Contact Count in current Address Book\n8. Total number of Contacts in all Address Books\n0. Exit");
+    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n5. Add new Address Book\n6. Switch to Another Existing Address Book\n7. Contact Count in current Address Book\n8. Total number of Contacts in all Address Books\n9. Search by City\n10. Search by State\n0. Exit");
     Console.WriteLine();
 
     int input = Convert.ToInt32(Console.ReadLine());
@@ -74,6 +75,14 @@ while (true)
     else if (input == 8)
     {
         Console.WriteLine(books.TotalContacts());
+    }
+    else if (input == 9)
+    {
+        books.FindPersonByCity();
+    }
+    else if (input == 10)
+    {
+        books.FindPersonByState();
     }
     else if (input == 0)
     {

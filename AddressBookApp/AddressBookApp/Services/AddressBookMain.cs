@@ -1,4 +1,6 @@
 ﻿using System;
+using AddressBookApp.Models;
+
 namespace AddressBookApp.Services
 {
 	public class AddressBookMain
@@ -15,7 +17,41 @@ namespace AddressBookApp.Services
 			Console.WriteLine("Book added Successfully");
 		}
 
-		public AddressBook FindBook()
+		public void FindPersonByCity()
+		{
+			Console.Write("Enter City to search: ");
+			string? city = Console.ReadLine();
+			List<Contact> res = new();
+			foreach(AddressBook b in books)
+			{
+				List<Contact> temp = b.GetContacts().Where(c => c.City.Equals(city, StringComparison.OrdinalIgnoreCase)).ToList();
+				res.AddRange(temp);
+			}
+			Console.WriteLine($"Found {res.Count} contact(s):");
+			foreach(Contact c in res)
+			{
+				Console.WriteLine(c.ToString());
+			}
+		}
+
+        public void FindPersonByState()
+        {
+            Console.Write("Enter State to search: ");
+            string? state = Console.ReadLine();
+            List<Contact> res = new();
+            foreach (AddressBook b in books)
+            {
+                List<Contact> temp = b.GetContacts().Where(c => c.State.Equals(state, StringComparison.OrdinalIgnoreCase)).ToList();
+                res.AddRange(temp);
+            }
+            Console.WriteLine($"Found {res.Count} contact(s):");
+            foreach (Contact c in res)
+            {
+                Console.WriteLine(c.ToString());
+            }
+        }
+
+        public AddressBook FindBook()
 		{
 			Console.WriteLine("Enter Address Book's Id you want to find: ");
 			int id = Convert.ToInt32(Console.ReadLine());

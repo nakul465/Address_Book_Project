@@ -21,7 +21,7 @@ namespace AddressBookApp.Services
 
 		public void AddContact(Contact c)
 		{
-            bool isPresent = contacts.Any(b => b.FirstName == c.FirstName && b.LastName == c.LastName);
+            bool isPresent = contacts.Any(b => b.FirstName.Equals(c.FirstName,StringComparison.OrdinalIgnoreCase) && b.LastName.Equals(c.LastName,StringComparison.OrdinalIgnoreCase));
             if (isPresent)
             {
                 Console.WriteLine($"Contact '{c.FirstName} {c.LastName}' already exists. Duplicate not added.");
@@ -40,9 +40,9 @@ namespace AddressBookApp.Services
             Console.Write("Enter Last name to edit: ");
             string? ls = Console.ReadLine();
 
-            Contact? c = contacts.FirstOrDefault(c => c.FirstName == fs && c.LastName == ls);
+            Contact? c = contacts.FirstOrDefault(c => c.FirstName.Equals(fs, StringComparison.OrdinalIgnoreCase) && c.LastName.Equals(ls, StringComparison.OrdinalIgnoreCase));
 
-			if (c == null) Console.WriteLine("Contact not found");
+            if (c == null) Console.WriteLine("Contact not found");
 			else
 			{
                 Console.Write("Enter Address to edit: ");
@@ -98,7 +98,7 @@ namespace AddressBookApp.Services
             Console.Write("Enter last name to delete: ");
             string? ls = Console.ReadLine();
 
-            Contact? c = contacts.FirstOrDefault(c=>c.FirstName==fs && c.LastName==ls);
+            Contact? c = contacts.FirstOrDefault(c=>c.FirstName.Equals(fs, StringComparison.OrdinalIgnoreCase) && c.LastName.Equals(ls, StringComparison.OrdinalIgnoreCase));
             if (c == null)
             {
                 Console.WriteLine("Contact not found");
@@ -109,6 +109,11 @@ namespace AddressBookApp.Services
                 count--;
                 Console.WriteLine("Contact deleted.");
             }
+        }
+
+        public List<Contact> GetContacts()
+        {
+            return contacts;
         }
 
 		public void PrintAll()
