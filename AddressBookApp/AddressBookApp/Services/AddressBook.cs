@@ -71,8 +71,30 @@ namespace AddressBookApp.Services
                 {
                     c.Email = email!;
                 }
+
+                Console.WriteLine("Contact Updated");
             }
 		}
+
+        public void RemoveContact()
+        {
+            Console.Write("Enter first name to delete: ");
+            string? fs = Console.ReadLine();
+            Console.Write("Enter last name to delete: ");
+            string? ls = Console.ReadLine();
+
+            Contact? c = contacts.FirstOrDefault(c=>c.FirstName==fs && c.LastName==ls);
+            if (c == null)
+            {
+                Console.WriteLine("Contact not found");
+            }
+            else
+            {
+                contacts.Remove(c);
+                Console.WriteLine("Contact deleted.");
+            }
+        }
+
 		public void PrintAll()
 		{
 			foreach(Contact c in contacts)

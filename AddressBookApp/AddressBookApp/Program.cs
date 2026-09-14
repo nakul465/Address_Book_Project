@@ -9,10 +9,11 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("--------------Menu--------------");
     Console.WriteLine();
-    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n0. Exit");
+    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n0. Exit");
     Console.WriteLine();
 
     int input = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine();
     if (input == 1)
     {
         Console.Write("Enter First Name: ");
@@ -42,6 +43,9 @@ while (true)
     else if (input == 3)
     {
         book.EditContact();
+    }else if (input == 4)
+    {
+        book.RemoveContact();
     }
     else if (input == 0)
     {
