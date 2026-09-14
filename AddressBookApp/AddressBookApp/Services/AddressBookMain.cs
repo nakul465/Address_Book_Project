@@ -108,6 +108,16 @@ namespace AddressBookApp.Services
             Console.WriteLine();
         }
 
+		public void SortByName()
+		{
+			List<Contact> res = books.SelectMany(b => b.GetContacts()).OrderBy(c=>c.FirstName).ThenBy(c=>c.LastName).ToList();
+
+			foreach(Contact c in res)
+			{
+				Console.WriteLine(c.ToString());
+			}
+		}
+
 		public int TotalContacts()
 		{
 			int result = books.Sum(b => b.Count);

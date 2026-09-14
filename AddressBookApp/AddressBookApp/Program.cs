@@ -11,7 +11,7 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("--------------Menu--------------");
     Console.WriteLine();
-    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n5. Add new Address Book\n6. Switch to Another Existing Address Book\n7. Contact Count in current Address Book\n8. Total number of Contacts in all Address Books\n9. Search by City\n10. Search by State\n11. View by City/State\n12. Count by City/State\n0. Exit");
+    Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n5. Add new Address Book\n6. Switch to Another Existing Address Book\n7. Contact Count in current Address Book\n8. Total number of Contacts in all Address Books\n9. Search by City\n10. Search by State\n11. View by City/State\n12. Count by City/State\n13. Sort by Name\n0. Exit");
     Console.WriteLine();
 
     int input = Convert.ToInt32(Console.ReadLine());
@@ -91,6 +91,10 @@ while (true)
     else if (input == 12)
     {
         books.CountByCityOrState();
+    }
+    else if (input == 13)
+    {
+        books.SortByName();
     }
     else if (input == 0)
     {
