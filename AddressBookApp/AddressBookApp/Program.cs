@@ -44,7 +44,8 @@ while (true)
     else if (input == 3)
     {
         book.EditContact();
-    }else if (input == 4)
+    }
+    else if (input == 4)
     {
         book.RemoveContact();
     }

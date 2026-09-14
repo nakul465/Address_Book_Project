@@ -21,6 +21,12 @@ namespace AddressBookApp.Services
 
 		public void AddContact(Contact c)
 		{
+            bool isPresent = contacts.Any(b => b.FirstName == c.FirstName && b.LastName == c.LastName);
+            if (isPresent)
+            {
+                Console.WriteLine($"Contact '{c.FirstName} {c.LastName}' already exists. Duplicate not added.");
+                return;
+            }
 			contacts.Add(c);
             count++;
 			Console.WriteLine("Contact Added Successfully");
