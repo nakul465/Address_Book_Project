@@ -6,6 +6,19 @@ AddressBookMain books = new AddressBookMain();
 AddressBook book = new AddressBook();
 books.AddBook(book);
 
+Contact person1 = new Contact("John", "Doe", "12 MG Road", "Pune", "Maharashtra", "411001", "9876543210", "john.doe@mail.com");
+Contact person2 = new Contact("Nakul", "Arora", "12 MG Road", "Pune", "Haryana", "411001", "9876543210", "john.doe@mail.com");
+Contact person3 = new Contact("Manish", "Bansal", "12 MG Road", "Pune", "Maharashtra", "411001", "9876543210", "john.doe@mail.com");
+Contact person4 = new Contact("Luv", "Bhatia", "12 MG Road", "Pune", "Haryana", "411001", "9876543210", "john.doe@mail.com");
+Contact person5 = new Contact("Manan", "Goel", "12 MG Road", "Karnal", "Maharashtra", "411001", "9876543210", "john.doe@mail.com");
+book.AddContact(person1);
+book.AddContact(person2);
+book = new AddressBook();
+books.AddBook(book);
+book.AddContact(person3);
+book.AddContact(person4);
+book.AddContact(person5);
+
 while (true)
 {
     Console.WriteLine();
@@ -13,117 +26,85 @@ while (true)
     Console.WriteLine();
     Console.WriteLine("1. Add Contact\n2. Show All Contact\n3. Edit Contact\n4. Remove Contact\n5. Add new Address Book\n6. Switch to Another Existing Address Book\n7. Contact Count in current Address Book\n8. Total number of Contacts in all Address Books\n9. Search by City\n10. Search by State\n11. View by City/State\n12. Count by City/State\n13. Sort by Name\n14. Sort by City / State / Zip\n0. Exit");
     Console.WriteLine();
-
-    int input = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine();
-    if (input == 1)
+    int input;
+    Console.Write(">");
+    try
     {
-        Console.Write("Enter First Name: ");
-        string? firstName = Console.ReadLine();
-        Console.Write("Enter Last Name: ");
-        string? lastName = Console.ReadLine();
-        Console.Write("Enter Address: ");
-        string? address = Console.ReadLine();
-        Console.Write("Enter City Name: ");
-        string? city = Console.ReadLine();
-        Console.Write("Enter State Name: ");
-        string? state = Console.ReadLine();
-        Console.Write("Enter ZIP Code: ");
-        string? zip = Console.ReadLine();
-        Console.Write("Enter Phone Number: ");
-        string? phoneNumber = Console.ReadLine();
-        Console.Write("Enter Email Address: ");
-        string? email = Console.ReadLine();
-
-        Contact c = new Contact(firstName!, lastName!, address!, city!, state!, zip!, phoneNumber!, email!);
-        book.AddContact(c);
+        input = Convert.ToInt32(Console.ReadLine());
     }
-    else if (input == 2)
+    catch (Exception e)
     {
-        book.PrintAll();
-    }
-    else if (input == 3)
-    {
-        book.EditContact();
-    }
-    else if (input == 4)
-    {
-        book.RemoveContact();
-    }
-    else if (input == 5)
-    {
-        book = new AddressBook();
-        books.AddBook(book);
-        Console.WriteLine($"New Address Book successfully Created with id {book.AddressBookId}");
-    }
-    else if (input == 6)
-    {
-        AddressBook temp = books.FindBook();
-        if (temp != null)
-        {
-            book = temp;
-        }
-        else
-        {
-            Console.WriteLine("Book with the given id not found");
-        }
-    }
-    else if (input == 7)
-    {
-        Console.WriteLine($"Total no of contacts in current Address Book: {book.Count}");
-    }
-    else if (input == 8)
-    {
-        Console.WriteLine(books.TotalContacts());
-    }
-    else if (input == 9)
-    {
-        books.FindPersonByCity();
-    }
-    else if (input == 10)
-    {
-        books.FindPersonByState();
-    }
-    else if (input == 11)
-    {
-        books.GroupByCityOrState();
-    }
-    else if (input == 12)
-    {
-        books.CountByCityOrState();
-    }
-    else if (input == 13)
-    {
-        books.SortByName();
-    }
-    else if (input == 14)
-    {
-        Console.WriteLine("Which Field to sort by :\n1. City\n2. State\n3. ZIP");
-        int n=Convert.ToInt32(Console.ReadLine());
-        if (n == 1)
-        {
-            books.SortByCity();
-        }
-        else if (n == 2)
-        {
-            books.SortByState();
-        }
-        else if (n == 3)
-        {
-            books.SortByZip();
-        }
-        else
-        {
-            Console.WriteLine("Invalid Input");
-        }
-    }
-    else if (input == 0)
-    {
+        Console.WriteLine(e.Message);
         break;
     }
-    else
+    
+    Console.WriteLine();
+    switch (input)
     {
-        Console.WriteLine("Invalid Input");
-    }
+        case 1:
+            Contact c = book.CreateContact();
+            book.AddContact(c);
+            break;
+        case 2:
+            book.PrintAll();
+            break;
+        case 3:
+            book.EditContact();
+            break;
+        case 4:
+            book.RemoveContact();
+            break;
+        case 5:
+            book = new AddressBook();
+            books.AddBook(book);
+            Console.WriteLine($"New Address Book successfully Created with id {book.AddressBookId}");
+            break;
+        case 6:
+            AddressBook temp = books.FindBook();
+            if (temp != null)
+                book = temp;
+            else
+                Console.WriteLine("Book with the given id not found");
+            break;
+        case 7:
+            Console.WriteLine($"Total no of contacts in current Address Book: {book.Count}");
+            break;
+        case 8:
+            Console.WriteLine(books.TotalContacts());
+            break;
+        case 9:
+            books.FindPersonByCity();
+            break;
+        case 10:
+            books.FindPersonByState();
+            break;
+        case 11:
+            books.GroupByCityOrState();
+            break;
+        case 12:
+            books.CountByCityOrState();
+            break;
+        case 13:
+            books.SortByName();
+            break;
+        case 14:
+            Console.WriteLine("Which Field to sort by :\n1. City\n2. State\n3. ZIP");
+            int n = Convert.ToInt32(Console.ReadLine());
 
+            if (n == 1)
+                books.SortByCity();
+            else if (n == 2)
+                books.SortByState();
+            else if (n == 3)
+                books.SortByZip();
+            else
+                Console.WriteLine("Invalid Input");
+
+            break;
+        case 0:
+            return;
+        default:
+            Console.WriteLine("Invalid Input");
+            break;
+    }
 }

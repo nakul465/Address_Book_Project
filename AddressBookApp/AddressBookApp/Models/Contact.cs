@@ -13,6 +13,7 @@ namespace AddressBookApp.Models
         public string Zip { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+        public bool IsValid { get; } 
 
         public Contact(string firstName, string lastName, string address,string city, string state, string zip,string phoneNumber, string email)
         {
@@ -27,12 +28,12 @@ namespace AddressBookApp.Models
             try
             {
                 ContactValidator.Validate(this);
+                IsValid = true;
             }
             catch (InvalidContactException e)
             {
                 Console.WriteLine(e.Message);
             }
-            
         }
 
         public override string ToString()
