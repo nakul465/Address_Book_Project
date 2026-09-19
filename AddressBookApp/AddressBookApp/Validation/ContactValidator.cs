@@ -7,35 +7,35 @@ namespace AddressBookApp.Validation
 {
 	public class ContactValidator
 	{
-        private static string namePattern = @"^[A-Z][A-Za-z]{2,}$";
-        private static string addressPattern = @"^.{4,}$";
-        private static string zipPattern = @"^[0-9]{6}$";
-        private static string phonePattern = @"^[0-9]{10}$";
-        private static string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+        private static string _namePattern = @"^[A-Z][A-Za-z]{2,}$";
+        private static string _addressPattern = @"^.{4,}$";
+        private static string _zipPattern = @"^[0-9]{6}$";
+        private static string _phonePattern = @"^[0-9]{10}$";
+        private static string _emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
         private static bool IsValidName(string firstName)
         {
-            return Regex.IsMatch(firstName, namePattern);
+            return Regex.IsMatch(firstName, _namePattern);
         }
 
         private static bool IsValidAddress(string lastName)
         {
-            return Regex.IsMatch(lastName, addressPattern);
+            return Regex.IsMatch(lastName, _addressPattern);
         }
 
         private static bool IsValidZip(string zip)
         {
-            return Regex.IsMatch(zip, zipPattern);
+            return Regex.IsMatch(zip, _zipPattern);
         }
 
         private static bool IsValidPhone(string phoneNumber)
         {
-            return Regex.IsMatch(phoneNumber, phonePattern);
+            return Regex.IsMatch(phoneNumber, _phonePattern);
         }
 
         private static bool IsValidEmail(string email)
         {
-            return Regex.IsMatch(email, emailPattern);
+            return Regex.IsMatch(email, _emailPattern);
         }
 
         public static void Validate(Contact c)
