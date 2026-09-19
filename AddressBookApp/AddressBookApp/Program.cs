@@ -6,19 +6,6 @@ AddressBookMain books = new AddressBookMain();
 AddressBook book = new AddressBook();
 books.AddBook(book);
 
-Contact person1 = new Contact("John", "Doe", "12 MG Road", "Pune", "Maharashtra", "411001", "9876543210", "john.doe@mail.com");
-Contact person2 = new Contact("Nakul", "Arora", "12 MG Road", "Pune", "Haryana", "411001", "9876543210", "john.doe@mail.com");
-Contact person3 = new Contact("Manish", "Bansal", "12 MG Road", "Pune", "Maharashtra", "411001", "9876543210", "john.doe@mail.com");
-Contact person4 = new Contact("Luv", "Bhatia", "12 MG Road", "Pune", "Haryana", "411001", "9876543210", "john.doe@mail.com");
-Contact person5 = new Contact("Manan", "Goel", "12 MG Road", "Karnal", "Maharashtra", "411001", "9876543210", "john.doe@mail.com");
-book.AddContact(person1);
-book.AddContact(person2);
-book = new AddressBook();
-books.AddBook(book);
-book.AddContact(person3);
-book.AddContact(person4);
-book.AddContact(person5);
-
 while (true)
 {
     Console.WriteLine();
